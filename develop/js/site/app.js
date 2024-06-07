@@ -32,7 +32,7 @@ App = {
     },
 
     videoObserver: function () {
-        const videos = document.querySelectorAll('video');
+        const videos = document.querySelectorAll('.slide video');
 
         const options = { root: null, rootMargin: '0px', threshold: 1 };
         const observer = new IntersectionObserver((entries) => {
