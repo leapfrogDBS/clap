@@ -11,6 +11,7 @@ get_header();
 
 if (have_posts()) :
     while (have_posts()) : the_post();
+        $post_id = get_the_ID();
         $video_url = get_field('video')['url'];
         $copy = get_field('body_text');
         ?>
@@ -19,7 +20,7 @@ if (have_posts()) :
             <section class="mt-36">
                 <div class="container">
                     <div class="back-to-home-link w-full text-right">
-                        <a href="<?= home_url(); ?>"><i class="fa-solid fa-x p-4 text-4xl"></i></a>
+                        <a href="<?= home_url(); ?>#slide-<?= $post_id; ?>"><i class="fa-solid fa-x p-4 text-4xl"></i></a>
                     </div>
                     <video src="<?php echo esc_url($video_url); ?>" playsinline controls></video>
                     <h1 class="my-10"><?php the_title(); ?></h1>

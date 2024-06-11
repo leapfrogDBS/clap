@@ -4,6 +4,10 @@ module.exports = {
     
     theme: {
        
+        fontFamily: {
+            'sans' : ['Montserrat', 'sans-serif'],
+            'tele' : ['Telemarines', 'sans-serif'],
+        },  
            
         container: {
             padding: {
