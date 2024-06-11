@@ -83,26 +83,3 @@ body {
 
 
 
-/* Always show the default video */
-.default-video {
-    display: block;
-}
-
-/* Hide the mobile video by default */
-.mobile-video {
-    display: none;
-}
-
-/* Show the mobile video and hide the default video on screens less than 780px, only if the mobile video exists */
-@media (max-width: 780px) {
-    .mobile-video {
-        display: block;
-    }
-    .default-video ~ .mobile-video {
-        display: block;
-    }
-    .default-video {
-        display: none;
-    }
-}
-

@@ -33,7 +33,6 @@
                  // Get ACF fields
                  $video_url = get_field('video')['url'];
                  $video_preview_url = get_field('video_preview')['url'];
-                 $mobile_video = get_field('mobile_video')['url'];
                  $like_number = get_field('number_of_likes'); 
                  $logo = get_field('project_logo');
                  $caption = get_field('project_caption');
@@ -42,9 +41,7 @@
  
                  <div class="slide" id="slide-<?php the_ID(); ?>"  data-post-id="<?php the_ID(); ?>">
                     <video src="<?php echo esc_url($video_preview_url); ?>" loop muted playsinline class="default-video"></video>
-                    <?php if ($mobile_video) : ?>
-                        <video src="<?php echo esc_url($mobile_video); ?>" loop muted playsinline class="mobile-video"></video>
-                    <?php endif; ?>
+                    
 
                     <div class="slide-info flex items-end justify-between container text-white">
                     
