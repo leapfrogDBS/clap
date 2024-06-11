@@ -36,31 +36,27 @@ likeBtn.forEach((item, index) => {
     localStorage.setItem(`liked_post_${postId}`, !isLiked);
 
     // Send AJAX request to update the like count in the backend
-    if (!isLiked) {
-      jQuery.ajax({
-        type: 'POST',
-        url: ajax_object.ajax_url,
-        data: {
-          action: 'like_post',
-          post_id: postId,
-          nonce: ajax_object.nonce
-        },
-        success: function(response) {
-          if (response.success) {
-            likeBtnNum[index].innerText = response.data.new_likes;
-          }
+    jQuery.ajax({
+      type: 'POST',
+      url: ajax_object.ajax_url,
+      data: {
+        action: isLiked ? 'unlike_post' : 'like_post', // Adjust the action based on the current state
+        post_id: postId,
+        nonce: ajax_object.nonce
+      },
+      success: function(response) {
+        if (response.success) {
+          likeBtnNum[index].innerText = response.data.new_likes;
         }
-      });
-    }
+      }
+    });
   });
 });
 
 function likePost(index, likeNum) {
   likeBtnIcon[index].classList.replace("fa-heart-o", "fa-heart");
-  likeBtnNum[index].innerText = likeNum + 1;
 }
 
 function unLikePost(index, likeNum) {
   likeBtnIcon[index].classList.replace("fa-heart", "fa-heart-o");
-  likeBtnNum[index].innerText = likeNum - 1;
 }

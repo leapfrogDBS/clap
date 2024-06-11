@@ -25,11 +25,11 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'clap' ); ?></a>
 
-	<header id="masthead" class="site-header fixed top-0 z-20 container flex items-center justify-between py-6 z-50">
+	<header id="masthead" class="site-header fixed top-0 container flex items-center justify-between py-6 z-50 slide-up">
 		<div class="site-branding">
-			<a href="<?= home_url(); ?>" aria-label="back to hompage">
-				<img src="<?= get_template_directory_uri(); ?>/assets/img/logo.svg" class="h-14 w-auto" alt="website logo"/>
-			</a>
+			<a href="<?= home_url(); ?>" aria-label="back to hompage" id="header-logo" class="h-14 w-auto inline-block">
+				<?php include(locate_template('assets/img/logo.svg')); ?>
+ 			</a>
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
@@ -42,11 +42,7 @@
 			</div>
 		</nav><!-- #site-navigation -->
 
-
-
 	</header><!-- #masthead -->
-
-
 
 
 	<div id="curtain-menu" class="curtain-menu invisible fixed inset-0 z-40 opacity-0 transition-[opacity,visibility] duration-300">

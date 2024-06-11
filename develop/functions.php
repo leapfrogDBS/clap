@@ -315,7 +315,7 @@ function register_projects_post_type() {
 add_action( 'init', 'register_projects_post_type', 0 );
 
 
-/* Update like post if clicked on the backend */
+// Handle liking a post
 function handle_like_post() {
     check_ajax_referer('like_post_nonce', 'nonce');
 
@@ -328,6 +328,22 @@ function handle_like_post() {
 }
 add_action('wp_ajax_like_post', 'handle_like_post');
 add_action('wp_ajax_nopriv_like_post', 'handle_like_post');
+
+// Handle unliking a post
+function handle_unlike_post() {
+    check_ajax_referer('like_post_nonce', 'nonce');
+
+    $post_id = intval($_POST['post_id']);
+    $likes = get_field('number_of_likes', $post_id);
+    $likes = $likes ? $likes - 1 : 0;
+    if ($likes < 0) $likes = 0; // Ensure likes don't go negative
+    update_field('number_of_likes', $likes, $post_id);
+
+    wp_send_json_success(array('new_likes' => $likes));
+}
+add_action('wp_ajax_unlike_post', 'handle_unlike_post');
+add_action('wp_ajax_nopriv_unlike_post', 'handle_unlike_post');
+
 
 
 /* Register Menus */
