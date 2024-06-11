@@ -63,7 +63,7 @@
                         </div>
                     </div>
 
-                     <div class="share-options" style="display: none;">
+                     <div class="share-options">
                         <button class="share-option" data-share-type="facebook"><i class="fa fa-facebook"></i></button>
                         <button class="share-option" data-share-type="twitter"><i class="fa fa-twitter"></i></button>
                         <button class="share-option" data-share-type="email"><i class="fa fa-envelope"></i></button>

@@ -3,6 +3,12 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
     
     theme: {
+
+        extend: {
+            colors: {
+              hoverColor: 'var(--hover-color)',
+        },
+    },
        
         fontFamily: {
             'sans' : ['Montserrat', 'sans-serif'],

@@ -1,5 +1,12 @@
-/* Text Styles */
+:root {
+    --hover-color: #c9ef31;
+}
 
+ html {
+    @apply text-white;
+}
+
+/* Text Styles */
 @font-face {
     font-family: 'Montserrat';
     src: url('assets/fonts/Montserrat-Regular.ttf') format('truetype');
@@ -28,10 +35,25 @@
     font-style: normal;
 }
 
-html {
-    @apply text-white;
+.container {
+    @apply space-y-3;
 }
-
 h1 {
     @apply text-5xl;
+}
+h2 {
+    @apply text-4xl;
+}
+h3 {
+    @apply text-3xl;
+}
+h4 {
+    @apply text-2xl;
+}
+h5 {
+    @apply text-xl;
+}
+
+.wysiwyg {
+    @apply space-y-3;
 }

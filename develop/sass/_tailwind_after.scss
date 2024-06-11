@@ -15,7 +15,7 @@ body {
     scrollbar-width: none;  /* Firefox */
 }
 .slide {
-    @apply relative h-[100vh] snap-center;
+    @apply relative h-[100vh] snap-center overflow-hidden;
     
     video {
         @apply h-full w-full object-cover;
@@ -40,13 +40,22 @@ body {
     
   }
   
-
+/* Share options */
 .share-options {
-    @apply flex justify-around mt-3 absolute bottom-0 left-0 right-0 bg-black py-5;
+    @apply flex justify-around mt-3 absolute bottom-0 left-0 right-0 bg-black py-5 translate-y-full transition-all duration-500 ease-in-out invisible;
+    &.active {
+        @apply translate-y-0 visible;
+    }
 }
 
 .share-option {
-    @apply bg-none border-none cursor-pointer text-2xl text-white;
+    @apply bg-none border-none cursor-pointer text-2xl text-white transition-all duration-500 ease-in-out;
+    &:hover i {
+        @apply text-hoverColor;
+    }
+    i {
+        @apply transition-all duration-500 ease-in-out;
+    }
 }
 
 
@@ -82,4 +91,11 @@ body {
 }
 
 
+/* Hover effects on header svgs */
+.site-branding svg path, #hamburger svg rect {
+    @apply transition-all duration-500 ease-in-out;
+}
+.site-branding:hover svg path, #hamburger:hover svg rect {
+    @apply fill-hoverColor;
+}
 

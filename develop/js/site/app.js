@@ -80,7 +80,7 @@ App = {
 
         shareBtn.forEach((item, index) => {
             shareBtn[index].addEventListener("click", function () {
-                shareOptions[index].style.display = shareOptions[index].style.display === 'none' ? 'flex' : 'none';
+                shareOptions[index].classList.toggle('active');
             });
         });
 
