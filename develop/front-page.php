@@ -36,20 +36,21 @@
                  $like_number = get_field('number_of_likes'); 
                  $logo = get_field('project_logo');
                  $caption = get_field('project_caption');
+                 $post_url = get_permalink();
                  
                  ?>
  
-                 <div class="slide" id="slide-<?php the_ID(); ?>"  data-post-id="<?php the_ID(); ?>">
+                 <div class="slide" id="slide-<?php the_ID(); ?>"  data-post-id="<?php the_ID(); ?>" data-post-url="<?php echo esc_url($post_url); ?>">
                     <video src="<?php echo esc_url($video_preview_url); ?>" loop muted playsinline class="default-video"></video>
                     
 
-                    <div class="slide-info flex items-end justify-between container text-white">
+                    <div class="slide-info flex items-end justify-between gap-x-6 container text-white">
                     
                         <div class="project-details max-w-96 flex flex-col items-start gap-y-6">
                             <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-14 w-auto">
-                            <p><?= $caption; ?></p>
+                            <p class="font-medium"><?= $caption; ?></p>
                             <div>
-                                <a href="<?= the_permalink(); ?>" class="uppercase text-black bg-white p-4 inline-block">Watch</a>
+                                <a href="<?= the_permalink(); ?>" class="uppercase text-black leading-none font-semibold bg-white py-4 px-6 rounded-full inline-block hover:text-white hover:bg-black transition-all ease-in-out duration-500">Watch</a>
                             </div>
                         </div>
                         <div class="side-bar">
@@ -70,7 +71,7 @@
                         <button class="share-option" data-share-type="copy"><i class="fa fa-link"></i></button>
                     </div>
 
-                    <div class="scroll-down absolute bottom-10 w-full flex justify-center">
+                    <div class="scroll-down absolute bottom-0 w-full flex justify-center">
                         <i class="fa-solid fa-chevron-down text-4xl text-white p-6 scroll-icon cursor-pointer"></i>
                     </div>
                  </div>

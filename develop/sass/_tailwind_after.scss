@@ -7,7 +7,7 @@ body {
     @apply max-w-none;
 }
 .slide-container {
-    @apply relative overflow-y-scroll overflow-x-hidden h-[100vh] snap-y snap-mandatory;
+    @apply relative overflow-y-scroll overflow-x-hidden h-[100dvh] snap-y snap-mandatory;
     &::-webkit-scrollbar {
         @apply hidden;
     }
@@ -15,7 +15,7 @@ body {
     scrollbar-width: none;  /* Firefox */
 }
 .slide {
-    @apply relative h-[100vh] snap-center overflow-hidden;
+    @apply relative h-[100dvh] snap-center overflow-hidden;
     
     video {
         @apply h-full w-full object-cover;
@@ -33,16 +33,16 @@ body {
   }
 
   .side-bar .side-icon {
-    @apply cursor-pointer text-5xl p-5;
+    @apply cursor-pointer text-3xl sm:text-5xl p-2 sm:p-5;
     p {
-        @apply text-2xl;
+        @apply text-lg sm:text-2xl;
     }   
     
   }
   
 /* Share options */
 .share-options {
-    @apply flex justify-around mt-3 absolute bottom-0 left-0 right-0 bg-black py-5 translate-y-full transition-all duration-500 ease-in-out invisible;
+    @apply flex justify-around mt-3 fixed bottom-0 left-0 right-0 bg-black py-5 translate-y-full transition-all duration-500 ease-in-out invisible z-50;
     &.active {
         @apply translate-y-0 visible;
     }
@@ -54,7 +54,7 @@ body {
         @apply text-hoverColor;
     }
     i {
-        @apply transition-all duration-500 ease-in-out;
+        @apply transition-all duration-700 ease-in-out;
     }
 }
 
@@ -93,9 +93,28 @@ body {
 
 /* Hover effects on header svgs */
 .site-branding svg path, #hamburger svg rect {
-    @apply transition-all duration-500 ease-in-out;
+    @apply transition-all duration-700 ease-in-out;
 }
 .site-branding:hover svg path, #hamburger:hover svg rect {
     @apply fill-hoverColor;
 }
 
+/* Contact Page and project nav black background */
+.page-template-page-contact, .single-project{
+    #masthead {
+        @apply bg-black;
+    }
+    section:first-child {
+        @apply pt-16 sm:pt-32;
+    }
+    .container {
+        @apply py-12;
+    }    
+}
+
+
+/* Preloader */
+#preloader {
+    z-index: 9999;
+    @apply fixed inset-0 bg-black w-full h-full flex justify-center items-center;
+}

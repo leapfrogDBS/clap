@@ -4,6 +4,7 @@ wp/.env
 wp/wp-content/uploads/
 wp/wp-content/themes/
 wp/wp-content/cache/
+wp/wp-content/ai1wm-backups/
 node_modules
 /wp/vendor
 package-lock.json

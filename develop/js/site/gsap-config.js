@@ -14,8 +14,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-
+ 
 }); // End of DOMContentLoaded
   
- 
+/* Use to rotate the image on the preloader */ 
+gsap.to(".preloader-icon", {
+  duration: 3,
+  rotationY: 360,
+  repeat: -1,
+  ease: "linear"
+}); 
+
+window.addEventListener('load', function() {
+  gsap.to("#preloader", {
+      opacity: 0, 
+      duration: 1,
+      onComplete: function() {
+          // Once the fade completes, set display to 'none'
+          document.getElementById("preloader").style.display = "none";
+      }
+  });
+});
   

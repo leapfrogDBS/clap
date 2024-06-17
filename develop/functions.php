@@ -141,21 +141,54 @@ function clap_scripts() {
     wp_enqueue_style('clap-style', get_template_directory_uri() . '/style.css', '', _S_VERSION);
     wp_enqueue_script('clap-app-js', get_template_directory_uri() . '/scripts/site/app.min.js', array(), _S_VERSION, true);
 
+    // Gsap Files
+    wp_enqueue_script('gsap-js', get_template_directory_uri() . '/scripts/lib/gsap.min.js', array(), _S_VERSION, true);
+    wp_enqueue_script('scrollTrigger-js', get_template_directory_uri() . '/scripts/lib/ScrollTrigger.min.js', array('gsap-js'), _S_VERSION, true);
+    wp_enqueue_script('gsap-config-js', get_template_directory_uri() . '/scripts/site/gsap-config.min.js', array('gsap-js', 'scrollTrigger-js'), _S_VERSION, true);
 
-	/*Gsap Files */
-	wp_enqueue_script('gsap-js', get_template_directory_uri() . '/scripts/lib/gsap.min.js', array(), _S_VERSION, true);
-	wp_enqueue_script('scrollTrigger-js', get_template_directory_uri() . '/scripts/lib/ScrollTrigger.min.js', array('gsap-js'), _S_VERSION, true);
-
-	wp_enqueue_script('gsap-config-js', get_template_directory_uri() . '/scripts/site/gsap-config.min.js', array('gsap-js', 'scrollTrigger-js'), _S_VERSION, true);
-
-	/* Like functionality */
-	wp_enqueue_script('like-script', get_template_directory_uri() . '/scripts/site/like.min.js', array('jquery'), null, true);
+    // Like functionality
+    wp_enqueue_script('like-script', get_template_directory_uri() . '/scripts/site/like.min.js', array('jquery'), null, true);
     wp_localize_script('like-script', 'ajax_object', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce' => wp_create_nonce('like_post_nonce')
     ));
+
+    // Retrieve ACF fields
+    $map_zoom_level = get_field('map_zoom_level', 'option');
+    $map_latitude = get_field('map_latitude', 'option');
+    $map_longitude = get_field('map_longitude', 'option');
+    $map_icon = get_field('map_icon', 'option');
+    $google_maps_api_key = get_field('google_maps_api_key', 'option');
+
+    // Google Maps API
+    wp_enqueue_script('google-maps', 'https://maps.googleapis.com/maps/api/js?key=' . $google_maps_api_key . '&callback=initMap', array(), null, true);
+
+    // Custom Maps JS
+    wp_enqueue_script('custom-maps', get_template_directory_uri() . '/scripts/site/custom-maps.min.js', array('google-maps'), null, true);
+
+	  // Localize the script with the ACF field values
+	  $localization_array = array(
+        'zoomLevel' => $map_zoom_level,
+        'latitude' => $map_latitude,
+        'longitude' => $map_longitude,
+        'mapIcon' => $map_icon['url'], // Assuming the ACF field returns an array with URL
+        'googleMapsApiKey' => $google_maps_api_key,
+        'templateDirectoryUri' => get_template_directory_uri()
+    );
+    wp_localize_script('custom-maps', 'wpVars', $localization_array);
 }
 add_action('wp_enqueue_scripts', 'clap_scripts');
+
+// Add async and defer attributes to the Google Maps API script
+function add_async_defer_attributes($tag, $handle) {
+    if ('google-maps' === $handle) {
+        return str_replace(' src', ' async defer src', $tag);
+    }
+    return $tag;
+}
+add_filter('script_loader_tag', 'add_async_defer_attributes', 10, 2);
+
+
 
 /**
  * Implement the Custom Header feature.
@@ -190,6 +223,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if( function_exists('acf_set_options_page_title') )
 {
     acf_add_options_page('Theme Options');
+	acf_add_options_page('Map Options');
 }
 
 
@@ -356,3 +390,5 @@ function clap_register_nav_menus() {
     );
 }
 add_action('init', 'clap_register_nav_menus');
+
+

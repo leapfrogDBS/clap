@@ -22,13 +22,23 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
+
+<?php get_template_part( 'template-parts/preloader' ); ?>
+
+<div id="page" class="site relative">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'clap' ); ?></a>
 
-	<header id="masthead" class="site-header fixed top-0 container flex items-center justify-between py-6 z-50 slide-up">
+	<header id="masthead" class="site-header fixed top-0 container flex items-center justify-between !py-6 z-50 slide-up">
 		<div class="site-branding">
-			<a href="<?= home_url(); ?>" aria-label="back to hompage" id="header-logo" class="h-14 w-auto inline-block">
-				<?php include(locate_template('assets/img/logo.svg')); ?>
+			<a href="<?= home_url(); ?>" aria-label="back to hompage" id="header-logo" class="h-10 sm:h-14 w-auto inline-block">
+			<?php
+				$svg_file = get_template_directory() . '/assets/img/logo.svg';
+				if (file_exists($svg_file)) {
+					echo file_get_contents($svg_file);
+				} else {
+					echo '<!-- SVG file not found -->';
+				}
+			?>
  			</a>
 		</div><!-- .site-branding -->
 
@@ -53,7 +63,7 @@
 					wp_nav_menu(array(
 					'theme_location' => 'header-menu',
 					'menu_id'        => 'header-menu',
-					'menu_class' => 'text-lg leading-none font-bold text-white flex flex-col gap-y-4 items-center justify-center h-full w-full text-center',
+					'menu_class' => 'text-5xl  font-tele leading-none font-bold text-white flex flex-col gap-y-6 items-center justify-center h-full w-full text-center',
 					)); 
 					?>
 				</div>

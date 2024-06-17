@@ -77,22 +77,24 @@ App = {
     shareButtons: function () {
         const shareBtn = document.querySelectorAll(".share-btn");
         const shareOptions = document.querySelectorAll(".share-options");
-
+    
         shareBtn.forEach((item, index) => {
             shareBtn[index].addEventListener("click", function () {
                 shareOptions[index].classList.toggle('active');
             });
         });
-
+    
         shareOptions.forEach((options, index) => {
             options.addEventListener("click", function (event) {
                 if (event.target.tagName !== 'BUTTON' && event.target.tagName !== 'I') return;
-
-                const postId = options.closest('.slide').getAttribute('data-post-id');
+    
+                const postElement = options.closest('[data-post-id]');
+                const postId = postElement.getAttribute('data-post-id');
+                const postUrl = postElement.getAttribute('data-post-url'); // Use data-post-url attribute
+                const postTitle = document.title; // or you can set it using postElement if available
+    
                 const shareType = event.target.closest('.share-option').getAttribute('data-share-type');
-                const postUrl = window.location.href.split('#')[0];
-                const postTitle = document.title;
-
+    
                 switch (shareType) {
                     case 'facebook':
                         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`, '_blank');
@@ -112,6 +114,7 @@ App = {
             });
         });
     },
+    
 
     init: function () {
         this.videoObserver();

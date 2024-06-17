@@ -5,7 +5,7 @@ const likeBtnNum = document.querySelectorAll(".like-number");
 
 // Load like state from local storage
 likeBtn.forEach((item, index) => {
-  const postId = likeBtn[index].closest('.slide').getAttribute('data-post-id');
+  const postId = likeBtn[index].closest('[data-post-id]').getAttribute('data-post-id');
   const isLiked = localStorage.getItem(`liked_post_${postId}`) === 'true';
   likeBtn[index].setAttribute('data-liked', isLiked);
   if (isLiked) {
@@ -32,7 +32,7 @@ likeBtn.forEach((item, index) => {
     likeBtn[index].setAttribute("data-liked", !isLiked);
 
     // Save the like state to local storage
-    const postId = likeBtn[index].closest('.slide').getAttribute('data-post-id');
+    const postId = likeBtn[index].closest('[data-post-id]').getAttribute('data-post-id');
     localStorage.setItem(`liked_post_${postId}`, !isLiked);
 
     // Send AJAX request to update the like count in the backend
