@@ -7,7 +7,7 @@ body {
     @apply max-w-none;
 }
 .slide-container {
-    @apply relative overflow-y-scroll overflow-x-hidden h-[100dvh] snap-y snap-mandatory snap-always;
+    @apply relative overflow-y-scroll overflow-x-hidden h-[100dvh] snap-y snap-mandatory;
     &::-webkit-scrollbar {
         @apply hidden;
     }
@@ -15,7 +15,7 @@ body {
     scrollbar-width: none;  /* Firefox */
 }
 .slide {
-    @apply relative h-[100dvh] snap-start overflow-hidden;
+    @apply relative h-[100dvh] snap-start overflow-hidden  snap-always;
     
     video {
         @apply h-full w-full object-cover;

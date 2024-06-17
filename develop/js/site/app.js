@@ -39,10 +39,19 @@ App = {
             entries.forEach(entry => {
                 App.togglePlayVideo(entry.target, entry.isIntersecting);
                 App.toggleClassOnSlide(entry.target, entry.isIntersecting);
+
+                // Check and remove active class from share buttons
+                const slide = entry.target.closest('.slide');
+                const shareOptions = slide.querySelector('.share-options');
+                if (!entry.isIntersecting && shareOptions) {
+                    shareOptions.classList.remove('active');
+                }
+                
             });
         }, options);
 
         videos.forEach(target => observer.observe(target));
+
     },
 
     hamburgerMenu: function () {

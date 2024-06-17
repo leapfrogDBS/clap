@@ -27,6 +27,8 @@
  
          if ($projects_query->have_posts()) :
              echo '<div class="slide-container">';
+             $iteration = 1;
+
              while ($projects_query->have_posts()) :
                  $projects_query->the_post();
  
@@ -37,11 +39,16 @@
                  $logo = get_field('project_logo');
                  $caption = get_field('project_caption');
                  $post_url = get_permalink();
+
+                $autoplay = "";
+                if ($iteration == 1) {
+                    $autoplay = "autoplay";
+                } 
                  
                  ?>
  
                  <div class="slide" id="slide-<?php the_ID(); ?>"  data-post-id="<?php the_ID(); ?>" data-post-url="<?php echo esc_url($post_url); ?>">
-                    <video src="<?php echo esc_url($video_preview_url); ?>" loop muted playsinline class="default-video"></video>
+                    <video src="<?php echo esc_url($video_preview_url); ?>" loop muted playsinline <?= $autoplay ?> class="default-video"></video>
                     
 
                     <div class="slide-info flex items-end justify-between gap-x-6 container text-white">
@@ -77,6 +84,7 @@
                  </div>
  
              <?php
+             $iteration ++;
              endwhile;
              echo '</div>';
          else :
@@ -90,6 +98,8 @@
       
      </main><!-- #main -->
  </div><!-- #primary -->
+
+
 
  <?php
   get_footer();
