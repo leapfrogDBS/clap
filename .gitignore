@@ -1,6 +1,7 @@
 .DS_Store
 wp/.env
 .htaccess
+wp/wp-content/plugins/
 wp/wp-content/uploads/
 wp/wp-content/themes/
 wp/wp-content/cache/
