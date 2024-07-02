@@ -112,6 +112,11 @@ body {
     }    
 }
 
+/* Like button */
+
+.fa-heart {
+    @apply text-hoverColor;
+}
 
 /* Preloader */
 #preloader {

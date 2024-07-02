@@ -16,6 +16,7 @@ if (have_posts()) :
         $copy = get_field('body_text');
         $like_number = get_field('number_of_likes'); 
         $post_url = get_permalink();
+        $logo = get_field('project_logo');
         ?>
 
         <main id="primary" class="site-main min-h-screen relative" data-post-id="<?php echo esc_attr($post_id); ?>" data-post-url="<?php echo esc_url($post_url); ?>">
@@ -30,7 +31,10 @@ if (have_posts()) :
             <section>
                 <div class="container !pt-0 flex flex-col md:flex-row items-end justify-between gap-x-12 gap-y-4 !pb-20">
                     <div class="info">
-                        <h1 class="mb-10 font-medium"><?php the_title(); ?></h1>
+                        <div class="flex items-center gap-x-4 mb-10">
+                                <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-14 w-auto">
+                                <h1><?= the_title(); ?></h1>
+                            </div>
                         <div class="wysiwyg"><?php echo wp_kses_post($copy); ?></div>
                     </div>
                     <div class="side-bar">
