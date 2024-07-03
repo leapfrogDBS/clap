@@ -38,6 +38,7 @@
                  $like_number = get_field('number_of_likes'); 
                  $logo = get_field('project_logo');
                  $caption = get_field('project_caption');
+                 $show_title = get_field('show_title');
                  $post_url = get_permalink();
 
                 $autoplay = "";
@@ -56,7 +57,9 @@
                         <div class="project-details max-w-md flex flex-col items-start gap-y-6">
                             <div class="flex items-center gap-x-4">
                                 <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-14 w-auto">
-                                <h2><?= the_title(); ?></h2>
+                                <?php if($show_title) : ?>
+                                    <h2><?= the_title(); ?></h2>
+                                <?php endif; ?>
                             </div>
                             
                             <p class="text-lg md:text-2xl font-medium"><?= $caption; ?></p>
@@ -77,7 +80,7 @@
 
                      <div class="share-options">
                         <button class="share-option" data-share-type="facebook"><i class="fa fa-facebook"></i></button>
-                        <button class="share-option" data-share-type="twitter"><i class="fa fa-twitter"></i></button>
+                        <button class="share-option" data-share-type="twitter"><i class="fa-brands fa-x-twitter"></i></button>
                         <button class="share-option" data-share-type="email"><i class="fa fa-envelope"></i></button>
                         <button class="share-option" data-share-type="copy"><i class="fa fa-link"></i></button>
                     </div>

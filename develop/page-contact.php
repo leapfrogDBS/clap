@@ -18,9 +18,9 @@ $phone = get_field('contact_number');
 
 <main id="primary" class="site-main">
     <section>
-        <div class="container">
+        <div class="container about">
             <?php if ($about) : ?>
-                <div class="about wysiwyg">
+                <div class="about wysiwyg mb-6">
                     <h1 class="mb-6" >About Us</h1>
                     <p><?= wp_kses_post($about); ?></p>
                 </div>
@@ -56,20 +56,16 @@ $phone = get_field('contact_number');
     <section class="social-media-links">
         <div class="container flex items-center gap-x-12 space-y-0 text-3xl">
             <?php
-                $fb = get_field('facebook', 'option');
-                $x = get_field('x', 'option');
                 $insta = get_field('instagram', 'option');
+                $linkedin = get_field('linkedin', 'option');
             ?>
 
             <?php 
-                if($fb) :
-                    echo '<a href="' .$fb['url'] .'" target="_blank"><i class="fa-brands fa-facebook-f"></i></i></a>';
-                endif; 
-                if($x) :
-                    echo '<a href="' .$x['url'] .'" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>';
-                endif; 
                 if($insta) :
                     echo '<a href="' .$insta['url'] .'" target="_blank"><i class="fa-brands fa-instagram"></i></i></a>';
+                endif; 
+                if($linkedin) :
+                    echo '<a href="' .$linkedin['url'] .'" target="_blank"><i class="fa-brands fa-linkedin"></i></i></i></a>';
                 endif; 
             ?>
 

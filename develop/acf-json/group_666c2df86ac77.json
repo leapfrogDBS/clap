@@ -3,41 +3,25 @@
     "title": "Social Media Links",
     "fields": [
         {
-            "key": "field_666c2df8683ca",
-            "label": "Facebook",
-            "name": "facebook",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
-            "key": "field_666c2e0d683cb",
-            "label": "X",
-            "name": "x",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
-        },
-        {
             "key": "field_666c2e25683cc",
             "label": "Instagram",
             "name": "instagram",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_6685687cf2eeb",
+            "label": "LinkedIn",
+            "name": "linkedin",
             "aria-label": "",
             "type": "link",
             "instructions": "",
@@ -69,5 +53,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718365753
+    "modified": 1720019092
 }

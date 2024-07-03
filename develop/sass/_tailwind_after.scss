@@ -123,3 +123,17 @@ body {
     z-index: 9999;
     @apply fixed inset-0 bg-black w-full h-full flex justify-center items-center;
 }
+
+/* About */
+.about {
+    a {
+        @apply text-[#c9ef31] font-medium;
+    }
+}
+
+/* Credits */
+#credits {
+    a {
+        @apply underline;
+    }
+}

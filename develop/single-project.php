@@ -17,6 +17,7 @@ if (have_posts()) :
         $like_number = get_field('number_of_likes'); 
         $post_url = get_permalink();
         $logo = get_field('project_logo');
+        $show_title = get_field('show_title');
         ?>
 
         <main id="primary" class="site-main min-h-screen relative" data-post-id="<?php echo esc_attr($post_id); ?>" data-post-url="<?php echo esc_url($post_url); ?>">
@@ -33,9 +34,34 @@ if (have_posts()) :
                     <div class="info">
                         <div class="flex items-center gap-x-4 mb-10">
                                 <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-14 w-auto">
-                                <h1><?= the_title(); ?></h1>
+                                <?php if($show_title) : ?>
+                                    <h1><?= the_title(); ?></h1>
+                                <?php endif; ?>
                             </div>
                         <div class="wysiwyg"><?php echo wp_kses_post($copy); ?></div>
+                        <?php if (have_rows('person')) : ?>
+                            <div id="credits" class="lg:columns-2 my-6 font-medium">
+                                <?php
+                                while (have_rows('person')) : the_row() ;
+                                    $position = get_sub_field('position');
+                                    $name = get_sub_field('name');
+                                    $link = get_sub_field('link');
+                                ?>
+                                    <div class="flex items-center gap-x-2 mb-2">
+                                        <p class=""w-max><?= $position; ?>:</p>
+                                        <p>
+                                            <?php 
+                                            if ($link) echo '<a href="' . $link['url'] . '" target="_blank">'; 
+                                            echo $name;
+                                            if ($link) echo '</a>'; 
+                                            ?>
+                                        </p>
+                                    </div>    
+                                <?php
+                                endwhile; ?>
+                            </div>
+                        <?php
+                         endif; ?>
                     </div>
                     <div class="side-bar">
                         <div class="side-icon like-btn" data-liked="false">
@@ -49,15 +75,14 @@ if (have_posts()) :
                 </div>
             </section>
            
-            
-        </main><!-- #main -->
-
-        <div class="share-options ">
+            <div class="share-options ">
                 <button class="share-option" data-share-type="facebook"><i class="fa fa-facebook"></i></button>
-                <button class="share-option" data-share-type="twitter"><i class="fa fa-twitter"></i></button>
+                <button class="share-option" data-share-type="twitter"><i class="fa-brands fa-x-twitter"></i></button>
                 <button class="share-option" data-share-type="email"><i class="fa fa-envelope"></i></button>
                 <button class="share-option" data-share-type="copy"><i class="fa fa-link"></i></button>
             </div>
+            
+        </main><!-- #main -->
 
        
 
