@@ -72,13 +72,10 @@ App = {
 
     scrollIcons: function () {
         const scrollIcons = document.querySelectorAll('.scroll-icon');
-        const slides = document.querySelectorAll('.slide');
 
         scrollIcons.forEach((icon, index) => {
             icon.addEventListener('click', () => {
-                if (index < slides.length - 1) {
-                    slides[index + 1].scrollIntoView({ behavior: 'smooth' });
-                }
+                fullpage_api.moveSectionDown();
             });
         });
     },
