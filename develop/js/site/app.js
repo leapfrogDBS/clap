@@ -120,6 +120,17 @@ App = {
             });
         });
     },
+
+    initFullpage: function() {
+        if (document.querySelector('#fullpage')) {
+            new fullpage('#fullpage', {
+                licenseKey: '2KAM7-7L07I-MOK4J-C41J9-VVXRO',
+                credits: { 
+                    enabled: false, 
+                },
+            });
+        }
+    },
     
 
     init: function () {
@@ -127,6 +138,7 @@ App = {
         this.hamburgerMenu();
         this.scrollIcons();
         this.shareButtons();
+        this.initFullpage();
     }
 };
 

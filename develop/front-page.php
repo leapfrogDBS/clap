@@ -99,13 +99,6 @@
     wp_reset_postdata();
     ?>
 
-<script>
-    new fullpage('#fullpage', {
-    //options here
-    scrollHorizontally: true
-});
-</script>
-
       
      </main><!-- #main -->
  </div><!-- #primary -->
