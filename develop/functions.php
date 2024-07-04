@@ -153,6 +153,11 @@ function clap_scripts() {
         'nonce' => wp_create_nonce('like_post_nonce')
     ));
 
+    // Fullpage js
+    wp_enqueue_style('fullpage-css', get_template_directory_uri() . '/assets/css/fullpage.css', '', _S_VERSION);
+    wp_enqueue_script('fullpage-js', get_template_directory_uri() . '/scripts/lib/fullpage.min.js', array(), _S_VERSION, true);
+
+
     // Retrieve ACF fields
     $map_zoom_level = get_field('map_zoom_level', 'option');
     $map_latitude = get_field('map_latitude', 'option');

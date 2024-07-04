@@ -72,13 +72,10 @@ App = {
 
     scrollIcons: function () {
         const scrollIcons = document.querySelectorAll('.scroll-icon');
-        const slides = document.querySelectorAll('.slide');
 
         scrollIcons.forEach((icon, index) => {
             icon.addEventListener('click', () => {
-                if (index < slides.length - 1) {
-                    slides[index + 1].scrollIntoView({ behavior: 'smooth' });
-                }
+                fullpage_api.moveSectionDown();
             });
         });
     },
@@ -123,6 +120,17 @@ App = {
             });
         });
     },
+
+    initFullpage: function() {
+        if (document.querySelector('#fullpage')) {
+            new fullpage('#fullpage', {
+                licenseKey: '2KAM7-7L07I-MOK4J-C41J9-VVXRO',
+                credits: { 
+                    enabled: false, 
+                },
+            });
+        }
+    },
     
 
     init: function () {
@@ -130,6 +138,7 @@ App = {
         this.hamburgerMenu();
         this.scrollIcons();
         this.shareButtons();
+        this.initFullpage();
     }
 };
 
