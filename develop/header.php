@@ -28,7 +28,7 @@
 <div id="page" class="site relative">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'clap' ); ?></a>
 
-	<header id="masthead" class="site-header fixed top-0 container flex items-center justify-between !py-6 z-50 slide-up">
+	<header id="masthead" class="site-header fixed top-0 container flex items-start justify-between !py-6 z-50 slide-up">
 		<div class="site-branding">
 			<a href="<?= home_url(); ?>" aria-label="back to hompage" id="header-logo" class="h-10 sm:h-14 w-auto inline-block">
 			<?php
@@ -42,7 +42,7 @@
  			</a>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
+		<nav id="site-navigation" class="main-navigation !mt-0">
 			<div id="hamburger" data-navtoggle class="z-50 cursor-pointer">
 				<svg viewBox="0 0 100 80" width="40" height="40">
 					<rect id="top-line" width="100" height="12" fill="white"></rect>

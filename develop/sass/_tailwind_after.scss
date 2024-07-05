@@ -30,7 +30,7 @@ body {
   }
 
   .side-bar .side-icon {
-    @apply cursor-pointer text-3xl sm:text-5xl p-2 sm:p-5;
+    @apply cursor-pointer text-3xl sm:text-5xl p-2 sm:p-5 pr-0 sm:pr-0;
     p {
         @apply text-lg sm:text-2xl;
     }   
