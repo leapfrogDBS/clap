@@ -32,7 +32,7 @@ if (have_posts()) :
             <section>
                 <div class="container !pt-0 flex flex-col md:flex-row items-end justify-between gap-x-12 gap-y-4 !pb-20">
                     <div class="info w-full">
-                        <div class="flex items-center gap-x-6 mb-10">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-10">
                                 <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-16 w-auto">
                                 <?php if($show_title) : ?>
                                     <h2><?= the_title(); ?></h2>
