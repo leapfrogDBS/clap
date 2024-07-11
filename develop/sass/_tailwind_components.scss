@@ -59,6 +59,9 @@ h5 {
 
 .wysiwyg {
     @apply space-y-3;
+    a {
+     @apply underline font-medium;
+    }
 
 }
 
