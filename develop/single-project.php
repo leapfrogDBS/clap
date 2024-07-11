@@ -31,11 +31,11 @@ if (have_posts()) :
             </section>
             <section>
                 <div class="container !pt-0 flex flex-col md:flex-row items-end justify-between gap-x-12 gap-y-4 !pb-20">
-                    <div class="info">
-                        <div class="flex items-center gap-x-4 mb-10">
-                                <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-14 w-auto">
+                    <div class="info w-full">
+                        <div class="flex items-center gap-x-6 mb-10">
+                                <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-16 w-auto">
                                 <?php if($show_title) : ?>
-                                    <h1><?= the_title(); ?></h1>
+                                    <h2><?= the_title(); ?></h2>
                                 <?php endif; ?>
                             </div>
                         <div class="wysiwyg"><?php echo wp_kses_post($copy); ?></div>
