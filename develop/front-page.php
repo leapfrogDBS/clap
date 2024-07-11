@@ -53,7 +53,7 @@
                 <div class="slide-info flex items-end justify-between gap-x-6 container text-white">
                     
                         <div class="project-details max-w-2xl flex flex-col items-start gap-y-6">
-                            <div class="flex items-center gap-x-6">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                                 <img src="<?= $logo['url']; ?>" alt="<?= $logo['alt']; ?>" class="h-16 w-auto">
                                 <?php if($show_title) : ?>
                                     <h2><?= the_title(); ?></h2>
