@@ -13,6 +13,7 @@ if (have_posts()) :
     while (have_posts()) : the_post();
         $post_id = get_the_ID();
         $video_url = get_field('video')['url'];
+        $caption = get_field('project_caption');
         $copy = get_field('body_text');
         $like_number = get_field('number_of_likes'); 
         $post_url = get_permalink();
@@ -38,6 +39,7 @@ if (have_posts()) :
                                     <h2><?= the_title(); ?></h2>
                                 <?php endif; ?>
                             </div>
+                        <p class="text-lg md:text-2xl font-medium mb-6"><?= $caption; ?></p>    
                         <div class="wysiwyg"><?php echo wp_kses_post($copy); ?></div>
                         <?php if (have_rows('person')) : ?>
                             <div id="credits" class="lg:columns-2 my-6 font-medium">

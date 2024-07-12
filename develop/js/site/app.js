@@ -34,7 +34,7 @@ App = {
     videoObserver: function () {
         const videos = document.querySelectorAll('.slide video');
 
-        const options = { root: null, rootMargin: '0px', threshold: 1 };
+        const options = { root: null, rootMargin: '0px', threshold: 0.5 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 App.togglePlayVideo(entry.target, entry.isIntersecting);
@@ -129,6 +129,12 @@ App = {
                 credits: { 
                     enabled: false, 
                 },
+                autoScrolling: true,
+                scrollHorizontally: true,
+                fitToSection: true,
+                scrollBar: false,
+                touchSensitivity: 15, // Adjust as needed
+                bigSectionsDestination: 'top', // or 'bottom'
             });
         }
     },
