@@ -48,7 +48,7 @@
 
         ?>    
             <div class="section slide"  id="slide-<?php the_ID(); ?>"  data-post-id="<?php the_ID(); ?>" data-post-url="<?php echo esc_url($post_url); ?>">
-                <video src="<?php echo esc_url($video_preview_url); ?>" loop muted playsinline <?= $autoplay ?> class="default-video h-full w-full object-cover z-40"></video>
+                <video src="<?php echo esc_url($video_preview_url); ?>" loop muted playsinline <?= $autoplay ?> class="default-video h-full w-full object-cover z-40 relative"></video>
 
                 <div class="slide-info flex items-end justify-between gap-x-6 container text-white z-50">
                     
