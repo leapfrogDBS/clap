@@ -13,6 +13,7 @@ if (have_posts()) :
     while (have_posts()) : the_post();
         $post_id = get_the_ID();
         $video_url = get_field('video')['url'];
+        $video_thumbnail = get_field('video_thumbnail');
         $caption = get_field('project_caption');
         $copy = get_field('body_text');
         $like_number = get_field('number_of_likes'); 
@@ -25,9 +26,18 @@ if (have_posts()) :
             <section>
                 <div class="container">
                     <div class="back-to-home-link w-full text-right">
-                        <a href="<?= home_url(); ?>#slide-<?= $post_id; ?>"><i class="fa-solid fa-x p-4 text-2xl sm:text-4xl"></i></a>
+                        <a href="<?= home_url(); ?>/#slide-<?= $post_id; ?>"><i class="fa-solid fa-x p-4 text-2xl sm:text-4xl"></i></a>
                     </div>
-                    <video class="w-full max-w-6xl mx-auto" src="<?php echo esc_url($video_url); ?>" playsinline controls></video> 
+                    <video
+                        class="w-full max-w-6xl mx-auto"
+                        src="<?php echo esc_url($video_url); ?>"
+                        playsinline
+                        controls
+                        <?php if (!empty($video_thumbnail)): ?>
+                             poster="<?php echo esc_url($video_thumbnail['url']); ?>"
+                        <?php endif; ?>
+                        >
+                    </video> 
                 </div>
             </section>
             <section>

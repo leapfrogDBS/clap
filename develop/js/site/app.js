@@ -130,7 +130,6 @@ App = {
                     enabled: false, 
                 },
                 autoScrolling: true,
-                scrollHorizontally: true,
                 fitToSection: true,
                 scrollBar: false,
                 touchSensitivity: 15, // Adjust as needed
