@@ -296,6 +296,7 @@ add_action('init', 'mytheme_register_all_blocks');
 
 
 // Register Custom Post Type Projects
+// Register Custom Post Type Projects
 function register_projects_post_type() {
 
     $labels = array(
@@ -332,7 +333,7 @@ function register_projects_post_type() {
         'description'           => __( 'A custom post type for projects', 'textdomain' ),
         'labels'                => $labels,
         'supports'              => array( 'title' ), // Only title is supported
-        'taxonomies'            => array(),
+        'taxonomies'            => array( 'category' ), // Add categories here
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
