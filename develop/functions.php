@@ -294,11 +294,9 @@ function mytheme_register_all_blocks() {
 }
 add_action('init', 'mytheme_register_all_blocks');
 
-
-// Register Custom Post Type Projects
-// Register Custom Post Type Projects
-function register_projects_post_type() {
-
+// Register Custom Post Type and Taxonomy for Projects
+function register_projects_post_type_and_taxonomy() {
+    // Register Custom Post Type: Projects
     $labels = array(
         'name'                  => _x( 'Projects', 'Post Type General Name', 'textdomain' ),
         'singular_name'         => _x( 'Project', 'Post Type Singular Name', 'textdomain' ),
@@ -333,13 +331,13 @@ function register_projects_post_type() {
         'description'           => __( 'A custom post type for projects', 'textdomain' ),
         'labels'                => $labels,
         'supports'              => array( 'title' ), // Only title is supported
-        'taxonomies'            => array( 'category' ), // Add categories here
+        'taxonomies'            => array( 'project_category' ), // Use custom taxonomy
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 20,
-		'menu_icon'             => 'dashicons-video-alt2',
+        'menu_icon'             => 'dashicons-video-alt2',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
@@ -351,8 +349,43 @@ function register_projects_post_type() {
     );
     register_post_type( 'project', $args );
 
+    // Register Custom Taxonomy: Project Categories
+    $taxonomy_labels = array(
+        'name'                       => _x( 'Project Categories', 'Taxonomy General Name', 'textdomain' ),
+        'singular_name'              => _x( 'Project Category', 'Taxonomy Singular Name', 'textdomain' ),
+        'menu_name'                  => __( 'Project Categories', 'textdomain' ),
+        'all_items'                  => __( 'All Categories', 'textdomain' ),
+        'parent_item'                => __( 'Parent Category', 'textdomain' ),
+        'parent_item_colon'          => __( 'Parent Category:', 'textdomain' ),
+        'new_item_name'              => __( 'New Category Name', 'textdomain' ),
+        'add_new_item'               => __( 'Add New Category', 'textdomain' ),
+        'edit_item'                  => __( 'Edit Category', 'textdomain' ),
+        'update_item'                => __( 'Update Category', 'textdomain' ),
+        'view_item'                  => __( 'View Category', 'textdomain' ),
+        'separate_items_with_commas' => __( 'Separate categories with commas', 'textdomain' ),
+        'add_or_remove_items'        => __( 'Add or remove categories', 'textdomain' ),
+        'choose_from_most_used'      => __( 'Choose from the most used', 'textdomain' ),
+        'popular_items'              => __( 'Popular Categories', 'textdomain' ),
+        'search_items'               => __( 'Search Categories', 'textdomain' ),
+        'not_found'                  => __( 'Not Found', 'textdomain' ),
+        'no_terms'                   => __( 'No categories', 'textdomain' ),
+        'items_list'                 => __( 'Categories list', 'textdomain' ),
+        'items_list_navigation'      => __( 'Categories list navigation', 'textdomain' ),
+    );
+    $taxonomy_args = array(
+        'labels'                     => $taxonomy_labels,
+        'hierarchical'               => true,
+        'public'                     => true,
+        'show_ui'                    => true,
+        'show_admin_column'          => true,
+        'show_in_nav_menus'          => true,
+        'show_tagcloud'              => true,
+        'show_in_rest'               => true, // Enable in block editor
+    );
+    register_taxonomy( 'project_category', array( 'project' ), $taxonomy_args );
 }
-add_action( 'init', 'register_projects_post_type', 0 );
+add_action( 'init', 'register_projects_post_type_and_taxonomy', 0 );
+
 
 
 // Handle liking a post
